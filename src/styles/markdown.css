@@ -14,6 +14,10 @@ h5 {
   filter: opacity(0.75);
 }
 
+p {
+  line-height: 1.5rem;
+}
+
 code {
   font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
 }
@@ -41,4 +45,5 @@ blockquote {
   padding: 0 1em;
   color: #768390;
   border-left: .25em solid #444c56;
+  margin-left: 0;
 }

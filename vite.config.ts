@@ -11,6 +11,10 @@ import { replaceSubstring } from '@chengdx/shared'
 import yaml from 'js-yaml'
 
 export default defineConfig({
+  base: '/me',
+  build: {
+    outDir: 'docs',
+  },
   plugins: [
     Inspect(),
     UnoCSS(),

@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{a as t,o as r,h as n,w as s,g as c}from"./index.497757a3.js";const a={};function _(l,f){const o=t("router-link");return r(),n(o,{to:"/blog-list"},{default:s(()=>[c(" Blogs ")]),_:1})}const p=e(a,[["render",_]]);export{p as default};
