@@ -6,6 +6,14 @@ a {
   text-decoration-thickness: 1px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  filter: opacity(0.75);
+}
+
 code {
   font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
 }

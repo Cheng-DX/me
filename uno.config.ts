@@ -19,18 +19,9 @@ export default defineConfig({
     ['flex-center', 'display-flex justify-center items-center'],
   ],
   rules: [
-    [
-      'scroll-y',
-      {
-        'overflow-y': 'scroll',
-      },
-    ],
-    [
-      'scroll-x',
-      {
-        'overflow-x': 'scroll',
-      },
-    ],
+    ['scroll-y', { 'overflow-y': 'scroll' }],
+    ['scroll-x', { 'overflow-x': 'scroll' }],
+    ['b-circle', { 'border-radius': '50%' }],
     [/^wp-(\d+)$/, ([, d]) => ({ width: `${d}%` })],
     [/^hp-(\d+)$/, ([, d]) => ({ height: `${d}%` })],
     [/^r-(\d+)$/, ([, d]) => ({ 'border-radius': `${d}px` })],

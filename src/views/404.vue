@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  HOME
+  <router-link to="/blog-list">
+    Blogs
+  </router-link>
 </template>
 
 <style scoped>

@@ -1,3 +1,8 @@
+---
+title: "The Vue Reactivity, Lecture on BinFE 2020"
+author: "Antfu"
+date: "2020-10-10"
+---
 
 > 这是我在2020滨江前端沙龙分享的文稿1
 >

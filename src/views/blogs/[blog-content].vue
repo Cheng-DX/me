@@ -6,12 +6,17 @@ const blogname = computed(() => {
   return route.params.blogname as string
 })
 
-const { content } = useBlogContent(blogname)
+const { content, meta } = useBlogContent(blogname)
 const result = useRenderMD(content)
 </script>
 
 <template>
-  <div max-w-80ch m-auto v-html="result" />
+  <div m-auto max-w-80ch>
+    <h1 mb-10>
+      {{ meta?.title }}
+    </h1>
+    <div v-html="result" />
+  </div>
 </template>
 
 <style scoped>

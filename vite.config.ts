@@ -7,6 +7,8 @@ import FileRouter from 'unplugin-vue-file-router/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { defaultExportResolver } from '@chengdx/default-export-resolver'
 import { presets as composablesPresets } from '@chengdx/composables'
+import { replaceSubstring } from '@chengdx/shared'
+import yaml from 'js-yaml'
 
 export default defineConfig({
   plugins: [
@@ -49,10 +51,23 @@ export default defineConfig({
       name: 'markdown-resolver',
       transform(src, id) {
         if (id.endsWith('.md')) {
+          const first = src.indexOf('---')
+          const second = src.indexOf('---', first + 3)
+          const metaString = src.substring(first + 3, second)
+          let meta
+          try {
+            meta = yaml.load(metaString)
+          }
+          catch (e) {
+            console.error(e)
+          }
+
+          src = replaceSubstring(src, first, second + 3, '')
           src = src.replaceAll('`', '\\`')
           src = src.replaceAll('${', '\\${')
           return {
-            code: `export default \`${src}\``,
+            code: `export const meta = ${JSON.stringify(meta, null, 2)}
+export default \`${src}\``,
           }
         }
       },

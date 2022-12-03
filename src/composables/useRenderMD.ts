@@ -2,7 +2,6 @@ import type { Ref } from 'vue'
 import createMD from 'markdown-it'
 import hljs from 'highlight.js/lib/common'
 import 'highlight.js/styles/github-dark.css'
-import '~/styles/markdown.css'
 
 const renderer = createMD({
   html: true,

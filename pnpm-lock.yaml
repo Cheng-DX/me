@@ -4,7 +4,9 @@ specifiers:
   '@antfu/eslint-config': ^0.27.0
   '@chengdx/composables': ^0.10.0
   '@chengdx/default-export-resolver': ^0.10.0
+  '@chengdx/shared': 0.10.0
   '@iconify-json/carbon': ^1.1.10
+  '@types/js-yaml': ^4.0.5
   '@types/markdown-it': ^12.2.3
   '@types/node': ^18.11.10
   '@unocss/preset-icons': ^0.46.5
@@ -13,6 +15,7 @@ specifiers:
   esno: ^0.16.3
   highlight.js: ^11.7.0
   highlightjs: ^9.16.2
+  js-yaml: 4.1.0
   markdown-it: ^13.0.1
   pnpm: ^7.17.1
   typescript: ^4.9.3
@@ -27,8 +30,10 @@ specifiers:
 
 dependencies:
   '@chengdx/composables': 0.10.0_vue@3.2.45
+  '@chengdx/shared': 0.10.0
   highlight.js: 11.7.0
   highlightjs: 9.16.2
+  js-yaml: 4.1.0
   markdown-it: 13.0.1
   vue: 3.2.45
   vue-router: 4.1.6_vue@3.2.45
@@ -37,6 +42,7 @@ devDependencies:
   '@antfu/eslint-config': 0.27.0_s5ps7njkmjlaqajutnox5ntcla
   '@chengdx/default-export-resolver': 0.10.0
   '@iconify-json/carbon': 1.1.11
+  '@types/js-yaml': 4.0.5
   '@types/markdown-it': 12.2.3
   '@types/node': 18.11.10
   '@unocss/preset-icons': 0.46.5
@@ -410,6 +416,10 @@ packages:
 
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
+    dev: true
+
+  /@types/js-yaml/4.0.5:
+    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -2356,7 +2366,6 @@ packages:
     hasBin: true
     dependencies:
       argparse: 2.0.1
-    dev: true
 
   /json-parse-even-better-errors/2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
