@@ -1,0 +1,36 @@
+a {
+  color: #539bf5;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 1px;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+}
+
+/* inline code */
+code:not([class]) {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #636e7b66;
+  border-radius: 6px;
+}
+
+pre {
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  padding: 20px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #2d333b;
+  border-radius: 6px;
+}
+
+blockquote {
+  padding: 0 1em;
+  color: #768390;
+  border-left: .25em solid #444c56;
+}

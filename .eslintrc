@@ -2,5 +2,6 @@
   "extends": "@antfu",
   "rules": {
     "arrow-parens": "off"
-  }
+  },
+  "ignorePatterns": "*.md"
 }
