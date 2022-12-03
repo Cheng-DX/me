@@ -1,0 +1,41 @@
+{
+  "name": "me",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.17.0",
+  "description": "My website",
+  "author": "Cheng-DX",
+  "license": "MIT",
+  "homepage": "https://github.com/Cheng-DX/me#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cheng-DX/me.git"
+  },
+  "bugs": "https://github.com/Cheng-DX/me/issues",
+  "keywords": [],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint .",
+    "fix": "eslint . --fix",
+    "prepublishOnly": "nr build",
+    "release": "bumpp && npm publish",
+    "start": "esno src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.27.0",
+    "@iconify-json/carbon": "^1.1.10",
+    "@types/node": "^18.11.10",
+    "@unocss/preset-icons": "^0.46.5",
+    "eslint": "^8.29.0",
+    "esno": "^0.16.3",
+    "pnpm": "^7.17.1",
+    "typescript": "^4.9.3",
+    "unocss": "^0.46.5",
+    "vite": "^3.2.4",
+    "vite-plugin-inspect": "^0.7.8",
+    "vitest": "^0.23.4"
+  }
+}

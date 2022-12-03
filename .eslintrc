@@ -1,0 +1,6 @@
+{
+  "extends": "@antfu",
+  "rules": {
+    "arrow-parens": "off"
+  }
+}
