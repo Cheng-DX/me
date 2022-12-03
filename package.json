@@ -48,7 +48,6 @@
     "@chengdx/composables": "^0.10.0",
     "@chengdx/shared": "0.10.0",
     "highlight.js": "^11.7.0",
-    "highlightjs": "^9.16.2",
     "js-yaml": "4.1.0",
     "markdown-it": "^13.0.1",
     "vue": "^3.2.45",

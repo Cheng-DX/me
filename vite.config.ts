@@ -22,7 +22,7 @@ export default defineConfig({
     FileRouter({
       matchRoute: [
         {
-          rule: filename => filename === '[blog-content]',
+          rule: filename => filename === 'blog-content',
           resolver: () => ':blogname',
         },
       ],

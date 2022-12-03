@@ -1,1 +1,0 @@
-import{d as a,a as r,o as t,c as o,F as l,e as c,f as _,w as i,g as p,t as u}from"./index.497757a3.js";const k=a({__name:"BlogList",setup(m){const n=["test","long"];return(d,f)=>{const s=r("router-link");return t(),o("div",null,[(t(),o(l,null,c(n,e=>_(s,{key:e,to:`/blogs/${e}`},{default:i(()=>[p(u(e),1)]),_:2},1032,["to"])),64))])}}});export{k as default};
