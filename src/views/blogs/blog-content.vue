@@ -12,13 +12,9 @@ const result = useRenderMD(content)
 
 <template>
   <div m-auto max-w-80ch>
-    <h1 mb-10>
+    <h1 mb-10 break-all>
       {{ meta?.title }}
     </h1>
     <div v-html="result" />
   </div>
 </template>
-
-<style scoped>
-
-</style>
