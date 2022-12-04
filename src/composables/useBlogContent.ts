@@ -25,12 +25,8 @@ export function useBlogContent(blogname: Ref<string>) {
       catch (e) {
         console.error(e)
       }
-
       mdtext = replaceSubstring(mdtext, first, second + 3, '')
-      mdtext = mdtext.replaceAll('`', '\\`')
-      mdtext = mdtext.replaceAll('${', '\\${')
-
-      meta.value = JSON.stringify(m, null, 2) as any
+      meta.value = m
       content.value = mdtext
     }
     catch (e) {

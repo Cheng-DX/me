@@ -13,6 +13,9 @@ export default defineConfig({
   build: {
     outDir: 'docs',
   },
+  assetsInclude: [
+    'blogs',
+  ],
   plugins: [
     Inspect(),
     UnoCSS(),
@@ -29,7 +32,7 @@ export default defineConfig({
       dts: true,
       resolvers: [
         defaultExportResolver([
-          { name: 'yaml', from: 'yaml' },
+          { name: 'yaml', from: 'js-yaml' },
         ]),
       ],
       include: [
