@@ -1,14 +1,13 @@
 <script setup lang="ts">
-const blogs = [
-  'test',
-  'long',
-]
+import { useBlogs } from '~/composables/useBlogs'
+
+const { blogs } = useBlogs()
 </script>
 
 <template>
-  <div>
-    <router-link v-for="blog in blogs" :key="blog" :to="`/blogs/${blog}`">
-      {{ blog }}
+  <div v-for="{ author, date, name, title } in blogs" :key="name">
+    <router-link :to="`/blogs/${name}`">
+      {{ title }}
     </router-link>
   </div>
 </template>

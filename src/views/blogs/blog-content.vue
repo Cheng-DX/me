@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useBlogContent, useRenderMD } from '~/composables'
+import { useBlogs } from '~/composables/useBlogs'
 const route = useRoute()
 
 const blogname = computed(() => {
@@ -16,5 +17,10 @@ const result = useRenderMD(content)
       {{ meta?.title }}
     </h1>
     <div v-html="result" />
+    <footer flex justify-end>
+      <router-link to="/blog-list" mt-14 mr-10 opacity-50 hover:opacity-80 transition-all c-white text-5>
+        cd ../
+      </router-link>
+    </footer>
   </div>
 </template>

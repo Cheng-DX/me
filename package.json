@@ -23,7 +23,8 @@
     "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "deploy": "sh deploy.sh"
+    "deploy": "sh deploy.sh",
+    "update": "node scripts/updateList.mjs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
@@ -43,7 +44,8 @@
     "unplugin-vue-file-router": "^0.2.1",
     "vite": "^3.2.4",
     "vite-plugin-inspect": "^0.7.8",
-    "vitest": "^0.23.4"
+    "vitest": "^0.23.4",
+    "consola": "^2.15.3"
   },
   "dependencies": {
     "@chengdx/composables": "^0.10.0",

@@ -1,18 +1,20 @@
-import { replaceSubstring } from '@chengdx/shared'
+import type { MaybeCallable } from '@chengdx/shared'
+import { replaceSubstring, resolveCallable } from '@chengdx/shared'
 import type { Ref } from 'vue'
+import type { Blog } from '~/types'
 
-export function useBlogContent(blogname: Ref<string>) {
+export function useBlogContent(blogname: Ref<string>, options?: {
+  url?: MaybeCallable<string, [string]>
+}) {
+  const BASE_URL = 'https://raw.githubusercontent.com/Cheng-DX/me/main/blogs/'
+  const { url = (name: string) => `${BASE_URL}${name}.md` } = options || {}
+
   const content = ref<string>('')
-  const meta = ref<{
-    title?: string
-    date?: string | number
-    author?: string
-  }>({})
+  const meta = ref<Blog>({})
 
   async function loadContent() {
-    const BASE_URL = 'https://raw.githubusercontent.com/Cheng-DX/me/main/blogs/'
     try {
-      const res = (await fetch(`${BASE_URL}${blogname.value}.md`))
+      const res = await fetch(resolveCallable(url, blogname.value))
       let mdtext = await res.text()
 
       const first = mdtext.indexOf('---')
@@ -34,8 +36,11 @@ export function useBlogContent(blogname: Ref<string>) {
     }
   }
 
-  watch(blogname, loadContent, {
+  watch(blogname, () => {
+    loadContent()
+  }, {
     immediate: true,
+    flush: 'post',
   })
 
   return {

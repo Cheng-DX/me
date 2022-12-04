@@ -8,7 +8,7 @@ const items = ref([
 <template>
   <header p-1rem flex justify-between items-center border-b-coolgray border-b-outset border-b-1>
     <router-link to="/" flex-center>
-      <img src="https://avatars.githubusercontent.com/u/68094066?v=4" w-7 h-7 b-circle alt="logo">
+      <img src="https://avatars.githubusercontent.com/u/68094066?v=4" w-7 h-7 b-rounded alt="logo">
     </router-link>
     <div flex-center>
       <div v-for="item in items" :key="item.name" p-inline-2>
