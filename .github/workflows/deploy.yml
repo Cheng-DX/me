@@ -1,42 +1,44 @@
-name: Deploy
+# name: Deploy
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
-jobs:
-  build:
+# jobs:
+#   build:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-    steps:
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
-      with:
-        version: 7.17.0
-    - name: Deploy on Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - run: |
-      set -e
-      pnpm install
-      pnpm run build
-      cd docs
-      echo > .nojekyll
-      
-      git config --global user.name "Cheng-DX"
-      git config --global user.email "2337040896@qq.com"
-      
-      git init
-      git checkout -B main
-      git add -A
-      git commit -m '[GitHub Action] Deploy'  
-      git push https://{{ secrets.ACCESS_TOKEN_ALL }}@github.com/Cheng-DX/me.git
-      cd -
+#     strategy:
+#       matrix:
+#         node-version: [18.x]
+#     steps:
+#     - uses: actions/checkout@v3
+#     - uses: pnpm/action-setup@v2
+#       with:
+#         version: 7.17.0
+#     - name: Deploy on Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#         cache: 'pnpm'
+#     - run: |
+#         set -e
+#         pnpm install
+#         pnpm run build
+#         cd docs
+#         echo > .nojekyll
+        
+#         git config --global user.name "Cheng-DX"
+#         git config --global user.email "2337040896@qq.com"
+        
+#         git init
+#         git branch -m main
+#         git checkout -B main
+#         git pull --set-upstream -f https://${{ secrets.ACCESS_TOKEN_ALL }}@github.com/Cheng-DX/me.git main
+#         git add -A
+#         git commit -m '[GitHub Action] Deploy'
+#         git push --set-upstream https://${{ secrets.ACCESS_TOKEN_ALL }}@github.com/Cheng-DX/me.git main
+#         cd -
