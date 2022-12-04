@@ -8,8 +8,8 @@ cd docs
 
 echo > .nojekyll
 
-git config user.name "Cheng-DX"
-git config user.email "<2337040896@qq.com>"
+git config --global user.name "Cheng-DX"
+git config --global user.email "2337040896@qq.com"
 
 git init
 git checkout -B main
