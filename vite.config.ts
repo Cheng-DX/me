@@ -12,6 +12,11 @@ export default defineConfig({
   base: '/me/',
   build: {
     outDir: 'docs',
+    rollupOptions: {
+      output: {
+        sanitizeFileName: (name) => name.startsWith('\0') ? name.slice(1) : name,
+      },
+    },
   },
   assetsInclude: [
     'blogs',
