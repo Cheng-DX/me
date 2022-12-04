@@ -38,5 +38,5 @@ jobs:
       git checkout -B main
       git add -A
       git commit -m '[GitHub Action] Deploy'  
-      git push https://{{ secrets.GITHUB_ACCESS_TOKEN }}@github.com/Cheng-DX/me.git
+      git push https://{{ secrets.ACCESS_TOKEN_ALL }}@github.com/Cheng-DX/me.git
       cd -

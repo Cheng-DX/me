@@ -17,6 +17,6 @@ git add -A
 git commit -m '[GitHub Action] Deploy'
 
 git push -f git@github.com:Cheng-DX/me.git main:gh-pages
-git push https://{{  }}@github.com/Cheng-DX/me.git
+git push https://<GITHUB_ACCESS_TOKEN>@github.com/Cheng-DX/me.git
 
 cd -
