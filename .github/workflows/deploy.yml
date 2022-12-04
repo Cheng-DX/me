@@ -19,6 +19,10 @@ jobs:
     - uses: pnpm/action-setup@v2
       with:
         version: 7.17.0
+    - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
     - name: Deploy on Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
