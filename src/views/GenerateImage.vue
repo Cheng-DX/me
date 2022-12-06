@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useOpenai } from '~/composables/useApiKey'
+import { useOpenai } from '~/composables/useOpenai'
 
 const { resetApiKey, isReady, openai } = useOpenai()
 const text = useLocalStorage('text', 'A cat')
