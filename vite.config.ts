@@ -17,6 +17,7 @@ export default defineConfig({
         sanitizeFileName: (name) => name.startsWith('\0') ? name.slice(1) : name,
       },
     },
+    target: 'es6',
   },
   assetsInclude: [
     'blogs',

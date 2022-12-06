@@ -1,8 +1,12 @@
 <script setup lang="ts">
+const router = useRouter()
 const items = ref([
-  { name: 'Blogs', link: '/blog-list' },
-  { name: 'Project', link: '/project' },
+  { name: 'Blogs', link: '/blog-list', icon: 'i-carbon-blog' },
+  { name: 'Project', link: '/project', icon: 'i-carbon-align-box-middle-left' },
+  { name: 'Image Generator', link: '/generate-image', icon: 'i-carbon-image-reference' },
 ])
+const apiKey = useLocalStorage('apiKey', '')
+const hasApiKey = computed(() => apiKey.value !== '')
 </script>
 
 <template>
@@ -12,8 +16,11 @@ const items = ref([
     </router-link>
     <div flex-center>
       <div v-for="item in items" :key="item.name" p-inline-2>
-        <router-link :to="item.link">
-          {{ item.name }}
+        <router-link :to="item.link" flex-center>
+          <div :class="item.icon" mr-1 mt-1 h-5 w-5 />
+          <span>
+            {{ item.name }}
+          </span>
         </router-link>
       </div>
       <a
@@ -27,6 +34,10 @@ const items = ref([
     </div>
   </header>
   <main m-auto p-8 pt-2>
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <transition>
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </main>
 </template>
