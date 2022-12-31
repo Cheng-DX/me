@@ -1,9 +1,17 @@
 [
   {
+    "name": "about-ts",
+    "title": "About TypeScript"
+  },
+  {
     "name": "long",
     "title": "The Vue Reactivity, Lecture on BinFE 2020",
     "author": "Antfu",
     "date": "2020-10-10"
+  },
+  {
+    "name": "maybeComputedRef-stuff",
+    "title": "Maybe computed ref stuff"
   },
   {
     "name": "test",
