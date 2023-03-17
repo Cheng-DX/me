@@ -14,6 +14,9 @@ const messages = ref<Message[]>([])
 const content = ref('')
 
 async function fetch() {
+  if (content.value === '')
+    return
+
   messages.value.push({
     role: 'user',
     content: content.value,
@@ -54,7 +57,7 @@ async function fetch() {
       </div>
       <div flex justify-center items-center>
         <input v-model="content" h-30px wp-50 pl-10px r-20px>
-        <button btn-primary h-30px w-100px m-0 ml-20px @click="fetch()">
+        <button :disabled="content === ''" btn-primary h-30px w-100px m-0 ml-20px @click="fetch()">
           Send
         </button>
       </div>
