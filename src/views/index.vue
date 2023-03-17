@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const items = ref([
   { name: 'Blogs', link: '/blog-list', icon: 'i-carbon-blog' },
-  { name: 'Project', link: '/project', icon: 'i-carbon-align-box-middle-left' },
-  { name: 'Image Generator', link: '/generate-image', icon: 'i-carbon-image-reference' },
+  // { name: 'Project', link: '/project', icon: 'i-carbon-align-box-middle-left' },
+  { name: 'IG', link: '/generate-image', icon: 'i-carbon-image-reference' },
   { name: 'ChatGPT', link: '/chat-gpt', icon: 'i-carbon-chat' },
 ])
 </script>
