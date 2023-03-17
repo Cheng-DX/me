@@ -1,7 +1,4 @@
 <script setup lang="ts">
-const background = '#22272d'
-const color = '#adbac7'
-
 function backToTop() {
   window.scrollTo({
     top: 0,
@@ -33,12 +30,8 @@ useEventListener('unload', () => {
 
 <style>
 .root {
-  --bg: v-bind(background);
-  --color: v-bind(color);
-}
-.root {
-  background-color: var(--bg);
-  color: var(--color);
+  background-color: #22272d;
+  color: #adbac7;
 }
 html {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";

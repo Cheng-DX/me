@@ -1,12 +1,9 @@
 <script setup lang="ts">
-const router = useRouter()
 const items = ref([
   { name: 'Blogs', link: '/blog-list', icon: 'i-carbon-blog' },
   { name: 'Project', link: '/project', icon: 'i-carbon-align-box-middle-left' },
   { name: 'Image Generator', link: '/generate-image', icon: 'i-carbon-image-reference' },
 ])
-const apiKey = useLocalStorage('apiKey', '')
-const hasApiKey = computed(() => apiKey.value !== '')
 </script>
 
 <template>

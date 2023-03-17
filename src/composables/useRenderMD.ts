@@ -23,6 +23,6 @@ const renderer = createMD({
 
 export function useRenderMD(source: Ref<string>) {
   return computed(() => {
-    return renderer.render(source.value || 'Loading...')
+    return renderer.render(source.value || '<h2>Loading...</h2>')
   })
 }

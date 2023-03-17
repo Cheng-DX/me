@@ -19,7 +19,7 @@ const result = useRenderMD(content)
     <div v-html="result" />
     <footer flex justify-end>
       <router-link to="/blog-list" mt-14 mr-10 opacity-50 hover:opacity-80 transition-all c-white text-5>
-        cd ../
+        Back
       </router-link>
     </footer>
   </div>

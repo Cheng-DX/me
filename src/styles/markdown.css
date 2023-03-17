@@ -25,7 +25,7 @@ code {
 /* inline code */
 code:not([class]) {
   padding: .2em .4em;
-  margin: 0;
+  /* margin-inline: .2em; */
   font-size: 85%;
   background-color: #636e7b66;
   border-radius: 6px;
