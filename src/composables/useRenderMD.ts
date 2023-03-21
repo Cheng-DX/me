@@ -3,7 +3,7 @@ import createMD from 'markdown-it'
 import hljs from 'highlight.js/lib/common'
 import 'highlight.js/styles/github-dark.css'
 
-const renderer = createMD({
+export const renderer = createMD({
   html: true,
   xhtmlOut: true,
   breaks: true,

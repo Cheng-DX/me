@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useOpenai } from '~/composables/useOpenai'
+import { renderer } from '~/composables'
 
 const { resetApiKey, isReady, openai } = useOpenai()
 const error = ref('')
@@ -33,7 +34,7 @@ async function fetch() {
     messages.value.push(data.choices[0].message as Message)
   }
   catch (e: any) {
-    error.value = `Failed. You can check your network or API key. ${e.message}`
+    error.value = e.message
   }
   finally {
     loading.value = false
@@ -47,9 +48,7 @@ async function fetch() {
       <div font-bold text-green>
         {{ message.role === 'assistant' ? 'ChatGPT' : 'You' }}
       </div>
-      <div>
-        {{ message.content }}
-      </div>
+      <div v-html="renderer.render(message.content)" />
     </div>
     <div mt-10px>
       <div font-bold text-start mt-10px mb-10px text-red>
@@ -57,6 +56,7 @@ async function fetch() {
       </div>
       <div flex justify-center items-center>
         <input v-model="content" h-30px wp-50 pl-10px r-20px>
+        {{ error }}
         <button :disabled="content === ''" btn-primary h-30px w-100px m-0 ml-20px @click="fetch()">
           Send
         </button>
