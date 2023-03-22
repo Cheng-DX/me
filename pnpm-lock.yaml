@@ -2,9 +2,9 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antfu/eslint-config': ^0.27.0
-  '@chengdx/composables': ^0.10.0
+  '@chengdx/composables': ^0.11.6
   '@chengdx/default-export-resolver': ^0.10.0
-  '@chengdx/shared': 0.10.0
+  '@chengdx/shared': ^0.11.6
   '@iconify-json/carbon': ^1.1.10
   '@types/js-yaml': ^4.0.5
   '@types/markdown-it': ^12.2.3
@@ -30,8 +30,8 @@ specifiers:
   vue-router: ^4.1.6
 
 dependencies:
-  '@chengdx/composables': 0.10.0_vue@3.2.45
-  '@chengdx/shared': 0.10.0
+  '@chengdx/composables': 0.11.6_vue@3.2.45
+  '@chengdx/shared': 0.11.6
   highlight.js: 11.7.0
   js-yaml: 4.1.0
   markdown-it: 13.0.1
@@ -209,13 +209,13 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
-  /@chengdx/composables/0.10.0_vue@3.2.45:
-    resolution: {integrity: sha512-xi+vM/7v0bVmDZ8i/TA/HJ9uSbzUwehsbioRopuZ0CWlZnTZTvpEJBw1doc7sQpGDDoIitBd5hFK33mezOUhzA==}
+  /@chengdx/composables/0.11.6_vue@3.2.45:
+    resolution: {integrity: sha512-5FhOdQlNqnAO/IBtNeebuXEjVb2zwhdA152pFmx2wOA5jmsFtqswhAGfSXqgaXjmp26uAyGxiIPB/nhc9Vw0JA==}
     peerDependencies:
       vue: ^3.0.0
     dependencies:
-      '@chengdx/maybe-ref': 0.10.0_vue@3.2.45
-      '@chengdx/shared': 0.10.0
+      '@chengdx/maybe-ref': 0.11.6_vue@3.2.45
+      '@chengdx/shared': 0.11.6
       vue: 3.2.45
     dev: false
 
@@ -223,16 +223,16 @@ packages:
     resolution: {integrity: sha512-9l4r2jPPOLx0E6eQrhG361YABFcKtWnoE+Qyk9hxmqDBb55ccCYg+vFG/tlEuskQyR8BYVHxB7wSDQ+dgT8s2A==}
     dev: true
 
-  /@chengdx/maybe-ref/0.10.0_vue@3.2.45:
-    resolution: {integrity: sha512-6WzgtIBp+UfH0Vu02gDJnpLMAzyvzCajq4w55SGzxDEVR/d87yxGR9zloVhM55daz50hM8zVYXfpOH5IvCSwmg==}
+  /@chengdx/maybe-ref/0.11.6_vue@3.2.45:
+    resolution: {integrity: sha512-pyLEooIASrUIXK/AGAQugvLu7pCqTBZpwXjW+jLT1kPWmaK2Wt12XCJKf+SiQYFbHHgYa57W+i7UWteCmv7FCA==}
     peerDependencies:
-      vue: ^3.2.41
+      vue: ^3.2.45
     dependencies:
       vue: 3.2.45
     dev: false
 
-  /@chengdx/shared/0.10.0:
-    resolution: {integrity: sha512-HP3AeEQxNKWbFYnlos4yapign1L9DXAu/24htETjL35mYfwP+ernxfaEEXgV7lxo5cMYF9p9SIutjgz8yPK3aA==}
+  /@chengdx/shared/0.11.6:
+    resolution: {integrity: sha512-sIk4Tab4dHWrBXci/fztflNHAUiR5OBv1Sccx27nXIq1VZ3iG9JaPkeoSvcnQUpV9s3pfRzNv5E4oBSVPWkdOw==}
     dev: false
 
   /@chengdx/shared/0.7.2:

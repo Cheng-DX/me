@@ -11,14 +11,23 @@ interface Message {
   content: string
 }
 
-const messages = ref<Message[]>([])
+const messages = useLocalStorage<Message[]>('messages', [])
 const content = ref('')
+
+function addMessage(message: Message) {
+  messages.value.push(message)
+  nextTick(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    })
+  })
+}
 
 async function fetch() {
   if (content.value === '')
     return
-
-  messages.value.push({
+  addMessage({
     role: 'user',
     content: content.value,
   })
@@ -30,8 +39,7 @@ async function fetch() {
       model: 'gpt-3.5-turbo',
       messages: messages.value,
     })
-
-    messages.value.push(data.choices[0].message as Message)
+    addMessage(data.choices[0].message as Message)
   }
   catch (e: any) {
     error.value = e.message
@@ -44,21 +52,21 @@ async function fetch() {
 
 <template>
   <div v-if="isReady">
-    <div v-for="(message, index) in messages" :key="index" mt-10px>
-      <div font-bold text-green>
+    <div
+      v-for="(message, index) in messages" :key="index" mt-10px
+      class="card"
+    >
+      <div font-bold text-green text-1 font-italic>
         {{ message.role === 'assistant' ? 'ChatGPT' : 'You' }}
       </div>
       <div v-html="renderer.render(message.content)" />
     </div>
     <div mt-10px>
-      <div font-bold text-start mt-10px mb-10px text-red>
-        {{ loading ? 'Loading...' : '' }}
-      </div>
       <div flex justify-center items-center>
-        <input v-model="content" h-30px wp-50 pl-10px r-20px>
+        <input v-model="content" h-30px wp-50 pl-10px r-20px @keypress.enter="fetch()">
         {{ error }}
         <button :disabled="content === ''" btn-primary h-30px w-100px m-0 ml-20px @click="fetch()">
-          Send
+          {{ loading ? 'Loading...' : 'Send' }}
         </button>
       </div>
     </div>
@@ -72,4 +80,12 @@ async function fetch() {
     </button>
   </div>
 </template>
+
+<style scoped>
+.card {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #cccccc4c;
+}
+</style>
 
