@@ -24,6 +24,9 @@ function addMessage(message: Message) {
   })
 }
 
+function clearMessages() {
+  messages.value = []
+}
 async function fetch() {
   if (content.value === '')
     return
@@ -65,8 +68,11 @@ async function fetch() {
       <div flex justify-center items-center>
         <input v-model="content" h-30px wp-50 pl-10px r-20px @keypress.enter="fetch()">
         {{ error }}
-        <button :disabled="content === ''" btn-primary h-30px w-100px m-0 ml-20px @click="fetch()">
+        <button :disabled="content === ''" btn-primary h-30px w-80px m-0 ml-20px @click="fetch()">
           {{ loading ? 'Loading...' : 'Send' }}
+        </button>
+        <button btn-danger h-30px w-80px m-0 ml-20px @click="clearMessages()">
+          Clear
         </button>
       </div>
     </div>
