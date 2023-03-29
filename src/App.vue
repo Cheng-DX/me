@@ -5,14 +5,17 @@ function backToTop() {
     behavior: 'smooth',
   })
 }
+const route = useRoute()
 const position = useLocalStorage('scrollTo', 0)
 onMounted(() => {
-  setTimeout(() => {
-    window.scrollTo({
-      top: position.value,
-      behavior: 'smooth',
-    })
-  }, 100)
+  if (window.location.hash !== '#/chat-gpt') {
+    setTimeout(() => {
+      window.scrollTo({
+        top: position.value,
+        behavior: 'smooth',
+      })
+    }, 100)
+  }
 })
 useEventListener('unload', () => {
   position.value = window.scrollY

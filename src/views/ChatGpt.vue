@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Axios from 'axios'
+import { loadAll } from 'js-yaml'
 import { useOpenai } from '~/composables/useOpenai'
 import { renderer } from '~/composables'
 
@@ -25,8 +26,9 @@ function addMessage(message: Message) {
   })
 }
 
-function genrateId() {
-  return Math.random().toString(36).substring(2, 15)
+function clear() {
+  if (!loading.value)
+    messages.value = []
 }
 
 const axios = Axios.create({
@@ -61,8 +63,11 @@ const axios = Axios.create({
   },
 })
 
+const fetchable = computed(() => {
+  return content.value.trim() !== '' && !loading.value
+})
 async function fetch() {
-  if (content.value === '')
+  if (!fetchable.value)
     return
   addMessage({
     role: 'user',
@@ -72,14 +77,14 @@ async function fetch() {
   content.value = ''
   loading.value = true
   try {
-    axios.post('/chat/completions', {
-      model: 'gpt-3.5-turbo',
-      messages: messages.value,
-      stream: true,
-    })
     addMessage({
       role: 'assistant',
       content: 'Thinking...',
+    })
+    await axios.post('/chat/completions', {
+      model: 'gpt-3.5-turbo',
+      messages: messages.value,
+      stream: true,
     })
   }
   catch (e: any) {
@@ -89,6 +94,13 @@ async function fetch() {
     loading.value = false
   }
 }
+
+onMounted(() => {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth',
+  })
+})
 </script>
 
 <template>
@@ -115,12 +127,12 @@ async function fetch() {
             @keypress.exact.enter="fetch()"
           >
         </div>
-        <div w-42px h-10px ml-11px r-6 p-block-10px btn-primary @click="fetch()">
+        <button w-42px h-30px ml-11px r-6 p-block-10px btn-primary :disabled="!fetchable" @click="fetch()">
           <div i-carbon-send-alt-filled s-20px c-ffffffd9 />
-        </div>
-        <div w-42px h-10px ml-11px r-6 p-block-10px btn-danger @click="messages = []">
+        </button>
+        <button w-42px h-30px ml-11px r-6 p-block-10px btn-danger :disabled="loading" @click="clear()">
           <div i-carbon-clean s-20px c-ffffffd9 />
-        </div>
+        </button>
       </div>
     </div>
   </div>
