@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { json } from 'stream/consumers'
+import Axios from 'axios'
 import { useOpenai } from '~/composables/useOpenai'
 import { renderer } from '~/composables'
 
-const { resetApiKey, isReady, openai } = useOpenai()
+const { resetApiKey, isReady, openai, apiKey } = useOpenai()
 const error = ref('')
 const loading = ref(false)
 
@@ -27,6 +29,39 @@ function addMessage(message: Message) {
 function clearMessages() {
   messages.value = []
 }
+
+const axios = Axios.create({
+  baseURL: 'https://api.openai.com/v1',
+  onDownloadProgress: ({ event }) => {
+    try {
+      const text = event.target.responseText.trim() as string
+      const s = text.split('data: ').filter(_ => _ !== '')
+        .map(s => {
+          if (!s.includes('[DONE]'))
+            return JSON.parse(s).choices[0].delta.content || ''
+          return ''
+        }).join('')
+      const lastMessage = messages.value[messages.value.length - 1]
+      if (lastMessage.role === 'assistant') {
+        lastMessage.content = s
+        nextTick(() => {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth',
+          })
+        })
+      }
+    }
+    catch (e) {
+      console.error(e)
+    }
+  },
+  headers: {
+    authorization: `Bearer ${apiKey.value}`,
+    accept: '*/*',
+  },
+})
+
 async function fetch() {
   if (content.value === '')
     return
@@ -38,11 +73,15 @@ async function fetch() {
   content.value = ''
   loading.value = true
   try {
-    const { data } = await openai.value.createChatCompletion({
+    axios.post('/chat/completions', {
       model: 'gpt-3.5-turbo',
       messages: messages.value,
+      stream: true,
     })
-    addMessage(data.choices[0].message as Message)
+    addMessage({
+      role: 'assistant',
+      content: 'Thinking...',
+    })
   }
   catch (e: any) {
     error.value = e.message
@@ -67,7 +106,6 @@ async function fetch() {
     <div mt-10px>
       <div flex justify-center items-center>
         <input v-model="content" h-30px wp-50 pl-10px r-20px @keypress.enter="fetch()">
-        {{ error }}
         <button :disabled="content === ''" btn-primary h-30px w-80px m-0 ml-20px @click="fetch()">
           {{ loading ? 'Loading...' : 'Send' }}
         </button>
