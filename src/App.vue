@@ -23,9 +23,9 @@ useEventListener('unload', () => {
   <div ref="content" class="root" min-h-screen>
     <router-view />
   </div>
-  <div fixed right-5 bottom-5 h-10 w-10 bgc-4b5259 b-circle flex-center cursor-pointer @click="backToTop()">
-    <div i-carbon-up-to-top h-5 w-5 bg-white font-1000 />
-  </div>
+  <!-- <div fixed right-5 bottom-5 h-8 w-8 bgc-4b5259 r-20 flex-center cursor-pointer @click="backToTop()">
+    <div i-carbon-up-to-top h-5 w-5 bg-white />
+  </div> -->
 </template>
 
 <style>

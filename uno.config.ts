@@ -13,10 +13,21 @@ export default defineConfig({
       'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600',
     ],
     ['flex-center', 'display-flex justify-center items-center'],
-    ['btn', 'c-text-0 flex-center m-0 r-5 cursor-pointer btn-text border-none disabled:opacity-50 disabled:cursor-not-allowed'],
-    ['btn-primary', 'btn bgc-5865f2 hover:bgc-4752c4 active:bgc-3c45a5'],
-    ['btn-success', 'btn bgc-248046 hover:bgc-1a6334 active:bgc-15562b'],
-    ['btn-danger', 'btn bgc-da373c hover:bgc-a12828 active:bgc-8f2022'],
+    ['btn', 'c-text-0 flex-center r-5 cursor-pointer btn-text border-none disabled:opacity-50 disabled:cursor-not-allowed'],
+
+    ['btn-primary', 'btn bg-primary'],
+    ['btn-success', 'btn bg-success'],
+    ['btn-danger', 'btn bg-danger'],
+    ['btn-text', 'btn bg-text c-text-3'],
+
+    ['bg-primary', 'bgc-5865f2 hover:bgc-4752c4 active:bgc-3c45a5'],
+    ['bg-success', 'bgc-248046 hover:bgc-1a6334 active:bgc-15562b'],
+    ['bg-danger', 'bgc-da373c hover:bgc-a12828 active:bgc-8f2022'],
+    ['bg-text', 'bgc-b8b9bf hover:bgc-e0e1e5 active:bgc-ffffff'],
+
+    ['c-change-1', 'c-text-1 hover:c-text-0 transition-280'],
+    ['c-change-2', 'c-text-2 hover:c-text-1 transition-280'],
+    ['c-change-3', 'c-text-3 hover:c-text-1 transition-280'],
   ],
   rules: [
     [
@@ -27,7 +38,6 @@ export default defineConfig({
     ],
     ['btn-text',
       {
-        'margin': '0 auto',
         'white-space': 'nowrap',
         'text-overflow': 'ellipsis',
         'font-weight': 700,
@@ -47,6 +57,7 @@ export default defineConfig({
     [/^hp-(\d+)$/, ([, d]) => ({ height: `${d}%` })],
     [/^r-(\d+)$/, ([, d]) => ({ 'border-radius': `${d}px` })],
     [/^bgc-([0-9a-zA-z]+)$/, ([, s]) => ({ 'background-color': `#${s}` })],
+    [/^c-([0-9a-zA-z]+)$/, ([, s]) => ({ color: `#${s}` })],
     [/^s-(\w+)$/, ([, w]) => ({ height: w, width: w })],
   ],
   presets: [

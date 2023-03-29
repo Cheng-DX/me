@@ -19,6 +19,7 @@ export const renderer = createMD({
     }
     return ''
   },
+  typographer: true,
 })
 
 export function useRenderMD(source: Ref<string>) {

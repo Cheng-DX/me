@@ -22,13 +22,18 @@ code {
   font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
 }
 
-/* inline code */
-code:not([class]) {
+code {
   padding: .2em .4em;
   /* margin-inline: .2em; */
   font-size: 85%;
   background-color: #636e7b66;
   border-radius: 6px;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
 }
 
 pre {

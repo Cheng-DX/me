@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { json } from 'stream/consumers'
 import Axios from 'axios'
 import { useOpenai } from '~/composables/useOpenai'
 import { renderer } from '~/composables'
 
-const { resetApiKey, isReady, openai, apiKey } = useOpenai()
+const { resetApiKey, isReady, apiKey } = useOpenai()
 const error = ref('')
 const loading = ref(false)
 
@@ -26,8 +25,8 @@ function addMessage(message: Message) {
   })
 }
 
-function clearMessages() {
-  messages.value = []
+function genrateId() {
+  return Math.random().toString(36).substring(2, 15)
 }
 
 const axios = Axios.create({
@@ -104,14 +103,24 @@ async function fetch() {
       <div v-html="renderer.render(message.content)" />
     </div>
     <div mt-10px>
-      <div flex justify-center items-center>
-        <input v-model="content" h-30px wp-50 pl-10px r-20px @keypress.enter="fetch()">
-        <button :disabled="content === ''" btn-primary h-30px w-80px m-0 ml-20px @click="fetch()">
-          {{ loading ? 'Loading...' : 'Send' }}
-        </button>
-        <button btn-danger h-30px w-80px m-0 ml-20px @click="clearMessages()">
-          Clear
-        </button>
+      <div w-full h-auto flex items-center>
+        <div p-block-8px p-inline-20px flex-1 flex bgc-383a40 r-8>
+          <input
+            v-model="content"
+            flex-1
+            transition
+            class="inner-input"
+            placeholder="给ChatGPT发消息 使用Enter发送"
+            autofocus="true"
+            @keypress.exact.enter="fetch()"
+          >
+        </div>
+        <div w-42px h-10px ml-11px r-6 p-block-10px btn-primary @click="fetch()">
+          <div i-carbon-send-alt-filled s-20px c-ffffffd9 />
+        </div>
+        <div w-42px h-10px ml-11px r-6 p-block-10px btn-danger @click="messages = []">
+          <div i-carbon-clean s-20px c-ffffffd9 />
+        </div>
       </div>
     </div>
   </div>
@@ -130,6 +139,15 @@ async function fetch() {
   padding: 10px 20px;
   border-radius: 10px;
   border: 1px solid #cccccc4c;
+}
+
+.inner-input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  line-height: 25px;
+  resize: none;
 }
 </style>
 
