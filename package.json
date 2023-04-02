@@ -54,6 +54,7 @@
     "highlight.js": "^11.7.0",
     "js-yaml": "4.1.0",
     "markdown-it": "^13.0.1",
+    "markdown-it-katex": "^2.0.3",
     "openai": "^3.2.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"

@@ -112,7 +112,7 @@ onMounted(() => {
       <div font-bold text-green text-1 font-italic>
         {{ message.role === 'assistant' ? 'ChatGPT' : 'You' }}
       </div>
-      <div v-html="renderer.render(message.content)" />
+      <div class="a" v-html="renderer.render(message.content)" />
     </div>
     <div mt-10px>
       <div w-full h-auto flex items-center>
