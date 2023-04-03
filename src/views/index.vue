@@ -1,10 +1,19 @@
 <script setup lang="ts">
+import { useOpenai } from '~/composables/useOpenai'
+
 const items = ref([
-  { name: 'Blogs', link: '/blog-list', icon: 'i-carbon-blog' },
+  // { name: '', link: '/blog-list', icon: 'i-carbon-blog' },
   // { name: 'Project', link: '/project', icon: 'i-carbon-align-box-middle-left' },
-  { name: 'IG', link: '/generate-image', icon: 'i-carbon-image-reference' },
+  // { name: 'IG', link: '/generate-image', icon: 'i-carbon-image-reference' },
   { name: 'ChatGPT', link: '/chat-gpt', icon: 'i-carbon-chat' },
 ])
+
+const { resetApiKey } = useOpenai()
+function reset() {
+  const r = window.confirm('Are you sure to reset Api Key?')
+  if (r)
+    resetApiKey()
+}
 </script>
 
 <template>
@@ -21,11 +30,15 @@ const items = ref([
           </span>
         </router-link>
       </div>
+      <a flex cursor-pointer @click="reset">
+        <div mr-1 mt-1 h-5 w-5 i-carbon-virtual-column-key />
+        <span>Reset</span>
+      </a>
       <a
         i-carbon-logo-github
         c-current
-        w-7
-        h-7
+        w-5
+        h-5
         p-inline-2
         href="https://github.com/Cheng-DX"
       />
