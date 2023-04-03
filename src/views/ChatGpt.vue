@@ -108,9 +108,16 @@ onMounted(() => {
     <div
       v-for="(message, index) in messages" :key="index" mt-10px
       class="card"
+      flex
+      items-start
     >
-      <div font-bold text-green text-1 font-italic>
-        {{ message.role === 'assistant' ? 'ChatGPT' : 'You' }}
+      <div
+        font-500 text-15px font-italic flex items-center mr-10px mt-10px
+        class="translate-y-50%"
+        :class="loading && index === messages.length - 1 ? 'loading' : ''"
+      >
+        <div v-if="message.role === 'assistant'" text-green i-tabler-brand-openai />
+        <div v-else i-carbon-ai-results-very-high />
       </div>
       <div class="a" v-html="renderer.render(message.content)" />
     </div>
@@ -160,6 +167,22 @@ onMounted(() => {
   width: 100%;
   line-height: 25px;
   resize: none;
+}
+
+/* opacity */
+@keyframes loading {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+.loading {
+  animation: loading 1.7s infinite ease-in-out;
 }
 </style>
 

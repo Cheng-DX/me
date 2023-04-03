@@ -69,6 +69,7 @@ export default defineConfig({
       collections: {
         carbon: () =>
           import('@iconify-json/carbon/icons.json').then(i => i.default as any),
+        tabler: () => import('@iconify-json/tabler/icons.json').then(i => i.default as any),
       },
     }),
     presetWebFonts({

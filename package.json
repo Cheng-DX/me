@@ -30,6 +30,7 @@
     "@antfu/eslint-config": "^0.27.0",
     "@chengdx/default-export-resolver": "^0.10.0",
     "@iconify-json/carbon": "^1.1.10",
+    "@iconify-json/tabler": "^1.1.70",
     "@types/js-yaml": "^4.0.5",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^18.11.10",

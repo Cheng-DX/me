@@ -6,6 +6,7 @@ specifiers:
   '@chengdx/default-export-resolver': ^0.10.0
   '@chengdx/shared': ^0.11.6
   '@iconify-json/carbon': ^1.1.10
+  '@iconify-json/tabler': ^1.1.70
   '@types/js-yaml': ^4.0.5
   '@types/markdown-it': ^12.2.3
   '@types/node': ^18.11.10
@@ -47,6 +48,7 @@ devDependencies:
   '@antfu/eslint-config': 0.27.0_s5ps7njkmjlaqajutnox5ntcla
   '@chengdx/default-export-resolver': 0.10.0
   '@iconify-json/carbon': 1.1.11
+  '@iconify-json/tabler': 1.1.70
   '@types/js-yaml': 4.0.5
   '@types/markdown-it': 12.2.3
   '@types/node': 18.11.10
@@ -321,6 +323,12 @@ packages:
 
   /@iconify-json/carbon/1.1.11:
     resolution: {integrity: sha512-IHkHSNmTM6q6b8DuKSzd+AEMYPZywSxcb+37kZU7ywtcwsGen3aVEvWFykopIWjjwj3xdZ/5UdwJRqhZDQMlNg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/tabler/1.1.70:
+    resolution: {integrity: sha512-aeeaCs8qIqd008uNN9TqJkDUVztRGrGjiMvSNQuRhmRzL3A7tI1DIzfaFYxsgYycpV3iizhnNWB3wJCjFoVI4w==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
