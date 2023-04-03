@@ -88,7 +88,18 @@ async function fetch() {
     })
   }
   catch (e: any) {
-    error.value = e.message
+    const lastMessage = messages.value[messages.value.length - 1]
+    if (lastMessage.role === 'assistant') {
+      const errorMsg = e?.response?.data?.error?.message || e.message
+      lastMessage.content = `<p>Your request failed with message:</p>
+      <span class='error'>${errorMsg}</span>`
+      nextTick(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth',
+        })
+      })
+    }
   }
   finally {
     loading.value = false
@@ -116,10 +127,10 @@ onMounted(() => {
         class="translate-y-50%"
         :class="loading && index === messages.length - 1 ? 'loading' : ''"
       >
-        <div v-if="message.role === 'assistant'" text-green i-tabler-brand-openai />
+        <div v-if="message.role === 'assistant'" i-tabler-brand-openai />
         <div v-else i-carbon-ai-results-very-high />
       </div>
-      <div class="a" v-html="renderer.render(message.content)" />
+      <div style="width: calc(100% - 28px);" v-html="renderer.render(message.content)" />
     </div>
     <div mt-10px>
       <div w-full h-auto flex items-center>
@@ -129,7 +140,7 @@ onMounted(() => {
             flex-1
             transition
             class="inner-input"
-            placeholder="给ChatGPT发消息 使用Enter发送"
+            placeholder="Send message to ChatGPT with Enter"
             autofocus="true"
             @keypress.exact.enter="fetch()"
           >
@@ -147,7 +158,10 @@ onMounted(() => {
     <h3>
       It seems like you haven't set your API key yet. Click the button below to set it.
     </h3>
-    <button btn h-10 @click="resetApiKey()">
+    <button
+      btn-primary
+      h-10 @click="resetApiKey()"
+    >
       Set API key
     </button>
   </div>
@@ -183,6 +197,12 @@ onMounted(() => {
 }
 .loading {
   animation: loading 1.7s infinite ease-in-out;
+}
+</style>
+
+<style>
+.error {
+  color: #ff5555;
 }
 </style>
 
