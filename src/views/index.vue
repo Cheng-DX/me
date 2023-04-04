@@ -44,7 +44,7 @@ function reset() {
       />
     </div>
   </header>
-  <main m-auto p-8 pt-2>
+  <main m-auto pt-2 class="main-container">
     <router-view v-slot="{ Component }">
       <transition>
         <component :is="Component" />
@@ -52,3 +52,14 @@ function reset() {
     </router-view>
   </main>
 </template>
+
+<style>
+.main-container {
+  padding: 20px;
+}
+@media screen and (width < 768px) {
+  .main-container {
+    padding: 10px;
+  }
+}
+</style>

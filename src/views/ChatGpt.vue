@@ -140,7 +140,7 @@ onMounted(() => {
             flex-1
             transition
             class="inner-input"
-            placeholder="Send message to ChatGPT with Enter"
+            placeholder="Send with Enter"
             autofocus="true"
             @keypress.exact.enter="fetch()"
           >
@@ -172,6 +172,13 @@ onMounted(() => {
   padding: 10px 20px;
   border-radius: 10px;
   border: 1px solid #cccccc4c;
+  text-align: justify;
+}
+
+@media screen and (width < 768px) {
+  .card {
+    padding: 5px 10px;
+  }
 }
 
 .inner-input {
