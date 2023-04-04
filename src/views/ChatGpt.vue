@@ -76,34 +76,33 @@ async function fetch() {
 
   content.value = ''
   loading.value = true
-  try {
-    addMessage({
-      role: 'assistant',
-      content: 'Thinking...',
-    })
-    await axios.post('/chat/completions', {
-      model: 'gpt-3.5-turbo',
-      messages: messages.value,
-      stream: true,
-    })
-  }
-  catch (e: any) {
-    const lastMessage = messages.value[messages.value.length - 1]
-    if (lastMessage.role === 'assistant') {
-      const errorMsg = e?.response?.data?.error?.message || e.message
-      lastMessage.content = `<p>Your request failed with message:</p>
+  axios.post('/chat/completions', {
+    model: 'gpt-3.5-turbo',
+    messages: messages.value,
+    stream: true,
+  })
+    .then()
+    .catch((e: any) => {
+      const lastMessage = messages.value[messages.value.length - 1]
+      if (lastMessage.role === 'assistant') {
+        const errorMsg = e?.response?.data?.error?.message || e.message
+        lastMessage.content = `<p>Your request failed with message:</p>
       <span class='error'>${errorMsg}</span>`
-      nextTick(() => {
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: 'smooth',
+        nextTick(() => {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth',
+          })
         })
-      })
-    }
-  }
-  finally {
-    loading.value = false
-  }
+      }
+    })
+    .finally(() => {
+      loading.value = false
+    })
+  addMessage({
+    role: 'assistant',
+    content: '',
+  })
 }
 
 onMounted(() => {
@@ -130,7 +129,11 @@ onMounted(() => {
         <div v-if="message.role === 'assistant'" i-tabler-brand-openai />
         <div v-else i-carbon-ai-results-very-high />
       </div>
-      <div style="width: calc(100% - 28px);" v-html="renderer.render(message.content)" />
+      <div
+        style="width: calc(100% - 28px);min-height: 54px;"
+        :class="loading && index === messages.length - 1 && 'content'"
+        v-html="renderer.render(message.content)"
+      />
     </div>
     <div mt-10px>
       <div w-full h-auto flex items-center>
@@ -204,6 +207,18 @@ onMounted(() => {
 }
 .loading {
   animation: loading 1.7s infinite ease-in-out;
+}
+
+.content > :not(ol):not(ul):not(pre):last-child:after,
+.content > ol:last-child li:last-child:after,
+.content > pre:last-child code:after,
+.content > ul:last-child li:last-child:after {
+  content: '|';
+  width: 3px;
+  height: 100%;
+  background-color: #ffffff73;
+  color: transparent;
+  margin-left: 2px;
 }
 </style>
 
