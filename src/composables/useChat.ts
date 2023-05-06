@@ -80,6 +80,8 @@ export function useMessages(messageCards: Ref<HTMLDivElement | undefined>) {
 export function useChatContext(apiKey: Ref<string>, messageCards: Ref<HTMLDivElement | undefined>) {
   const { messages, content, addMessage, clear, meta, newChat, removeChat, id, ids, messagesMap } = useMessages(messageCards)
 
+  let fetchingIdFlag = ''
+
   const axios = Axios.create({
     baseURL: 'https://api.openai.com/v1',
     onDownloadProgress: ({ event }) => {
@@ -91,7 +93,7 @@ export function useChatContext(apiKey: Ref<string>, messageCards: Ref<HTMLDivEle
               return JSON.parse(s).choices[0].delta.content || ''
             return ''
           }).join('')
-        const lastMessage = messages.value[messages.value.length - 1]
+        const lastMessage = messagesMap.value[fetchingIdFlag].messages[messagesMap.value[fetchingIdFlag].messages.length - 1]
         if (lastMessage.role === 'assistant') {
           lastMessage.content = s
           nextTick(() => {
@@ -139,6 +141,7 @@ export function useChatContext(apiKey: Ref<string>, messageCards: Ref<HTMLDivEle
   function send() {
     if (content.value.trim() === '')
       return
+    fetchingIdFlag = id.value
     addMessage({
       role: 'user',
       content: content.value,
