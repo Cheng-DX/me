@@ -2,6 +2,7 @@ import type { Ref } from 'vue'
 import createMD from 'markdown-it'
 import hljs from 'highlight.js/lib/common'
 import 'highlight.js/styles/github-dark.css'
+// @ts-expect-error no type file
 import mk from 'markdown-it-katex'
 
 export const renderer = createMD({
