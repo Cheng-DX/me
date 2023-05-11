@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useOpenai } from '~/composables/useOpenai'
+import { useTheme } from '~/composables/useTheme'
 
 const items = ref([
   // { name: '', link: '/blog-list', icon: 'i-carbon-blog' },
@@ -14,6 +15,8 @@ function reset() {
   if (r)
     resetApiKey()
 }
+
+const { isDark, toggleDark } = useTheme()
 </script>
 
 <template>
@@ -41,6 +44,12 @@ function reset() {
         h-5
         p-inline-2
         href="https://github.com/Cheng-DX"
+      />
+      <div
+        :class="isDark ? 'i-carbon-moon' : 'i-carbon-sunny'"
+        s-18px
+        cursor-pointer
+        @click="toggleDark"
       />
     </div>
   </header>

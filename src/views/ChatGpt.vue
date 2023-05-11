@@ -117,7 +117,12 @@ onMounted(() => {
       </div>
       <div mt-10px fixed bottom-10px wp-80>
         <div w-full h-auto flex items-center>
-          <div p-block-8px p-inline-20px flex-1 flex bgc-383a40 r-8>
+          <div
+            p-block-8px p-inline-20px flex-1 flex r-8 :style="{
+              border: '0.5px solid #cccccc88',
+              borderRadius: '10px',
+            }"
+          >
             <input
               v-model="content"
               flex-1
