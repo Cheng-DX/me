@@ -47,7 +47,7 @@ onMounted(() => {
 
 <template>
   <div flex>
-    <aside w-220px style="max-height: calc(100vh - 80px)" overflow-scroll>
+    <aside w-220px style="max-height: calc(100vh - 80px)" overflow-auto>
       <div btn-primary @click="newChat()">
         ADD
       </div>
@@ -81,7 +81,7 @@ onMounted(() => {
         </div>
       </div>
     </aside>
-    <main ref="messageCards" flex-1 ml-20px mb-50px style="max-height: calc(100vh - 150px)" overflow-scroll>
+    <main ref="messageCards" flex-1 ml-20px mb-50px style="max-height: calc(100vh - 150px)" overflow-auto>
       <div v-if="isReady">
         <div
           v-for="(message, index) in messages" :key="index" mt-10px
