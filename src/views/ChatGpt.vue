@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import Axios from 'axios'
-import { loadAll } from 'js-yaml'
 import { useOpenai } from '~/composables/useOpenai'
 import { useChatContext } from '~/composables/useChat'
 import { renderer } from '~/composables'
-import { useId } from '~/composables/useId'
 
 const { resetApiKey, isReady, apiKey } = useOpenai()
 const messageCards = ref<HTMLDivElement>()
@@ -35,6 +32,10 @@ function save() {
   renaming.value = false
   messagesMap.value[renamingId.value].name = name.value
   name.value = ''
+}
+
+function remove(index: number) {
+  messages.value.splice(index, 1)
 }
 
 onMounted(() => {
@@ -98,9 +99,15 @@ onMounted(() => {
             <div v-else i-carbon-ai-results-very-high />
           </div>
           <div
-            style="width: calc(100% - 28px);min-height: 54px;"
+            style="width: calc(100% - 68px); min-height: 54px;"
             :class="loading && index === messages.length - 1 && 'content'"
             v-html="renderer.render(message.content)"
+          />
+          <div
+            w-40px font-500 text-15px font-italic flex items-center
+            i-carbon-delete btn-danger
+            class="translate-y-50%"
+            @click="remove(index)"
           />
         </div>
       </div>
